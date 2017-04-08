@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-kotori",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "にっこにっこにー！",
   "main": "index.js",
   "scripts": {
@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/kokororin/eslint-config-kotori#readme",
   "dependencies": {
-    "eslint-plugin-more": "^0.3.0"
+    "eslint-plugin-more": "^0.1.1"
   }
 }
