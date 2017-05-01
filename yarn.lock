@@ -2,6 +2,3 @@
 # yarn lockfile v1
 
 
-eslint-plugin-more@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.npmjs.org/eslint-plugin-more/-/eslint-plugin-more-0.1.1.tgz#bf5ca395af3d3c36005869bb56d724f67536feb7"
