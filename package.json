@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-kotori",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "にっこにっこにー！",
   "main": "index.js",
   "scripts": {
@@ -19,5 +19,7 @@
     "url": "https://github.com/kokororin/eslint-config-kotori/issues"
   },
   "homepage": "https://github.com/kokororin/eslint-config-kotori#readme",
-  "dependencies": {}
+  "dependencies": {
+    "eslint-plugin-react": "^7.3.0"
+  }
 }
