@@ -2,7 +2,10 @@ module.exports = {
   parser: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 6,
-    sourceType: 'module'
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true
+    }
   },
   env: {
     browser: true,
@@ -82,19 +85,22 @@ module.exports = {
     yoda: 1, // 要求或者禁止Yoda条件
     'no-cond-assign': 1, // 禁止在条件语句中出现赋值操作符
     'new-cap': 1, // 要求构造函数首字母大写
-    'no-dupe-class-members': 1 // 不允许类成员中有重复的名称,
+    'no-dupe-class-members': 1, // 不允许类成员中有重复的名称,
     // React
-    "react/jsx-uses-react": 1,
-    "react/jsx-boolean-value": 1,// 如果属性值为 true, 可以直接省略
-    "react/no-string-refs": 1,// 总是在Refs里使用回调函数
-    "react/self-closing-comp": 1,// 对于没有子元素的标签来说总是自己关闭标签
-    "react/jsx-no-bind": [1, {
-        "ignoreRefs": true,
-        "allowArrowFunctions": true
-    }],// 当在 render() 里使用事件处理方法时，提前在构造函数里把 this 绑定上去
-    "react/jsx-uses-vars": 1,
-    "react/prefer-stateless-function": [1, { "ignorePureComponents": true }],// 如果你的模块有内部状态或者是refs, 推荐使用 class extends React.Component 而不是 React.createClass
-    "react/sort-comp": 1,
-    "react/jsx-pascal-case": [1, { "allowAllCaps": true }]// React模块名使用帕斯卡命名，实例使用骆驼式命名
+    'react/jsx-uses-react': 1,
+    'react/jsx-boolean-value': 1, // 如果属性值为 true, 可以直接省略
+    'react/no-string-refs': 1, // 总是在Refs里使用回调函数
+    'react/self-closing-comp': 1, // 对于没有子元素的标签来说总是自己关闭标签
+    'react/jsx-no-bind': [
+      1,
+      {
+        ignoreRefs: true,
+        allowArrowFunctions: true
+      }
+    ], // 当在 render() 里使用事件处理方法时，提前在构造函数里把 this 绑定上去
+    'react/jsx-uses-vars': 1,
+    'react/prefer-stateless-function': [1, { ignorePureComponents: true }], // 如果你的模块有内部状态或者是refs, 推荐使用 class extends React.Component 而不是 React.createClass
+    'react/sort-comp': 1,
+    'react/jsx-pascal-case': [1, { allowAllCaps: true }] // React模块名使用帕斯卡命名，实例使用骆驼式命名
   }
 };
