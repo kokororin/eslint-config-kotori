@@ -13,7 +13,7 @@ module.exports = {
     amd: true,
     node: true
   },
-  plugins: ['react'],
+  plugins: ['react', 'babel'],
   rules: {
     'comma-dangle': 1, // 要求或禁止使用拖尾逗号
     quotes: [1, 'single'], // 强制使用一致的反勾号、双引号或单引号
@@ -85,9 +85,9 @@ module.exports = {
     'wrap-iife': [1, 'any'], // 需要把立即执行的函数包裹起来
     yoda: 1, // 要求或者禁止Yoda条件
     'no-cond-assign': 1, // 禁止在条件语句中出现赋值操作符
-    'new-cap': 1, // 要求构造函数首字母大写
+    'babel/new-cap': 1, // 要求构造函数首字母大写
     'no-dupe-class-members': 1, // 不允许类成员中有重复的名称
-    'no-invalid-this': 1, // Disallow this keywords outside of classes or class-like objects
+    'babel/no-invalid-this': 1, // Disallow this keywords outside of classes or class-like objects
     // React
     'react/jsx-uses-react': 1,
     'react/jsx-boolean-value': 1, // 如果属性值为 true, 可以直接省略
