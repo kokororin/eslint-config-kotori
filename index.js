@@ -38,6 +38,7 @@ module.exports = {
     'no-alert': 1, // 禁用 Alert
     'no-var': 1, // 要求使用 let 或 const 而不是 var
     'no-multi-spaces': 1, // 禁止出现多个空格
+    'no-useless-constructor': 1, // 禁用不必要的构造函数
     'spaced-comment': 1, // 要求或禁止在注释前有空白 (space 或 tab)
     'prefer-arrow-callback': 1, // 推荐使用箭头函数作为回调
     'prefer-const': [1, { destructuring: 'all' }], // 建议使用const
