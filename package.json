@@ -19,12 +19,9 @@
     "url": "https://github.com/kokororin/eslint-config-kotori/issues"
   },
   "homepage": "https://github.com/kokororin/eslint-config-kotori#readme",
-  "dependencies": {
-    "eslint-plugin-babel": ">=5.0.0",
-    "eslint-plugin-react": ">=7.0.0"
-  },
   "peerDependencies": {
     "babel-eslint": ">=6.0.0",
-    "eslint": ">=3.0.0"
+    "eslint": ">=3.0.0",
+    "eslint-plugin-react": ">=7.0.0"
   }
 }
