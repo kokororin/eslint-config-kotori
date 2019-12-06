@@ -1,5 +1,4 @@
 module.exports = {
-  plugins: ['babel'],
   rules: {
     'comma-dangle': 'error', // 要求或禁止使用拖尾逗号
     quotes: ['error', 'single'], // 强制使用一致的反勾号、双引号或单引号

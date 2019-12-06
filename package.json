@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-kotori",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "にっこにっこにー！",
   "main": "index.js",
   "scripts": {
