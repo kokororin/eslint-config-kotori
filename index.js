@@ -1,5 +1,16 @@
-module.exports = {
-  plugins: ['react'],
+var path = require('path');
+var fs = require('fs');
+var findNodeModules = require('find-node-modules');
+
+var nodeModulesPaths = findNodeModules({ cwd: __dirname, relative: false });
+var nodeModulesPath =
+  nodeModulesPaths && nodeModulesPaths[0] ? nodeModulesPaths[0] : false;
+var hasReact = nodeModulesPath
+  ? fs.existsSync(path.join(nodeModulesPath, 'react'))
+  : false;
+
+var config = {
+  plugins: [],
   rules: {
     'comma-dangle': 'error', // 要求或禁止使用拖尾逗号
     quotes: ['error', 'single'], // 强制使用一致的反勾号、双引号或单引号
@@ -73,25 +84,30 @@ module.exports = {
     'no-cond-assign': 'error', // 禁止在条件语句中出现赋值操作符
     'new-cap': 'error', // 要求构造函数首字母大写
     'no-dupe-class-members': 'error', // 不允许类成员中有重复的名称
-    'no-invalid-this': 'error', // Disallow this keywords outside of classes or class-like objects
-    // React
-    'react/jsx-uses-react': 'error',
-    'react/jsx-boolean-value': 'error', // 如果属性值为 true, 可以直接省略
-    'react/no-string-refs': 'error', // 总是在Refs里使用回调函数
-    'react/self-closing-comp': 'error', // 对于没有子元素的标签来说总是自己关闭标签
-    'react/jsx-no-bind': [
-      'error',
-      {
-        ignoreRefs: true,
-        allowArrowFunctions: true
-      }
-    ], // 当在 render() 里使用事件处理方法时，提前在构造函数里把 this 绑定上去
-    'react/jsx-uses-vars': 'error',
-    'react/prefer-stateless-function': [
-      'error',
-      { ignorePureComponents: true }
-    ], // 如果你的模块有内部状态或者是refs, 推荐使用 class extends React.Component 而不是 React.createClass
-    'react/sort-comp': 'error',
-    'react/jsx-pascal-case': ['error', { allowAllCaps: true }] // React模块名使用帕斯卡命名，实例使用骆驼式命名
+    'no-invalid-this': 'error' // Disallow this keywords outside of classes or class-like objects
   }
 };
+
+if (hasReact) {
+  config.plugins.push('react');
+  config.rules['react/jsx-uses-react'] = 'error';
+  config.rules['react/jsx-boolean-value'] = 'error'; // 如果属性值为 true, 可以直接省略
+  config.rules['react/no-string-refs'] = 'error'; // 总是在Refs里使用回调函数
+  config.rules['react/self-closing-comp'] = 'error'; // 对于没有子元素的标签来说总是自己关闭标签
+  config.rules['react/jsx-no-bind'] = [
+    'error',
+    {
+      ignoreRefs: true,
+      allowArrowFunctions: true
+    }
+  ]; // 当在 render() 里使用事件处理方法时，提前在构造函数里把 this 绑定上去
+  config.rules['react/jsx-uses-vars'] = 'error';
+  config.rules['react/prefer-stateless-function'] = [
+    'error',
+    { ignorePureComponents: true }
+  ]; // 如果你的模块有内部状态或者是refs, 推荐使用 class extends React.Component 而不是 React.createClass
+  config.rules['react/sort-comp'] = 'error';
+  config.rules['react/jsx-pascal-case'] = ['error', { allowAllCaps: true }]; // React模块名使用帕斯卡命名，实例使用骆驼式命名
+}
+
+module.exports = config;
