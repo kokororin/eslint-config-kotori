@@ -4,7 +4,7 @@ var findNodeModules = require('find-node-modules');
 
 var nodeModulesPaths = findNodeModules({ cwd: __dirname, relative: false });
 var nodeModulesPath =
-  nodeModulesPaths && nodeModulesPaths[0] ? nodeModulesPaths[0] : false;
+  nodeModulesPaths && nodeModulesPaths[1] ? nodeModulesPaths[1] : false;
 var hasReact = nodeModulesPath
   ? fs.existsSync(path.join(nodeModulesPath, 'react'))
   : false;
