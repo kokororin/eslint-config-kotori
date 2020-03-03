@@ -1,10 +1,11 @@
-const { hasAnyDep } = require('ptils');
+var hasAnyDep = require('ptils').hasAnyDep;
 
-const hasReact = hasAnyDep('react');
-const hasVue = hasAnyDep('vue');
-const hasTS = hasAnyDep('typescript');
+var hasReact = hasAnyDep('react');
+var hasVue = hasAnyDep('vue');
+var hasTS = hasAnyDep('typescript');
 
-const config = {
+var config = {
+  parser: 'babel-eslint',
   parserOptions: {
     parser: 'babel-eslint',
     ecmaFeatures: { jsx: true },
@@ -108,13 +109,13 @@ if (hasReact) {
 }
 
 if (hasVue) {
-  config.plugins.push('vue');
   config.extends.push('plugin:vue/recommended');
 }
 
 if (hasTS) {
-  const tsRules = {
+  var tsRules = {
     'no-unused-vars': 'off',
+    'no-invalid-this': 'off',
     'react/sort-comp': 'off',
     'react/prop-types': 'off',
     '@typescript-eslint/explicit-member-accessibility': ['error'],
@@ -129,7 +130,13 @@ if (hasTS) {
       { prefixWithI: 'never' }
     ]
   };
-  config.parserOptions.parser = '@typescript-eslint/parser';
+  if (hasVue) {
+    config.parserOptions.parser = '@typescript-eslint/parser';
+    delete config.parser;
+  } else {
+    config.parser = '@typescript-eslint/parser';
+    delete config.parserOptions.parser;
+  }
   config.plugins.push('@typescript-eslint/eslint-plugin');
   config.extends.push('plugin:@typescript-eslint/eslint-recommended');
   Object.keys(tsRules).forEach(key => {
