@@ -1,12 +1,14 @@
 # eslint-config-kotori
 
+[![Build Status](http://img.shields.io/travis/LoveLiveSunshine/pixiv.moe.svg)](https://travis-ci.org/LoveLiveSunshine/pixiv.moe)
+
 ESLint shareable config for me.
 
 ## Features
 
-* React
-* Vue
-* TypeScript
+- React
+- Vue
+- TypeScript
 
 ## Usage
 
@@ -14,4 +16,5 @@ ESLint shareable config for me.
 2. add `"extends": "kotori"` to your .eslintrc
 
 ## License
+
 [MIT license](http://opensource.org/licenses/mit-license.php)

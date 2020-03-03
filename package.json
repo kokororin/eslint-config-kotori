@@ -4,7 +4,12 @@
   "description": "ESLint shareable config for me.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "(cd test/js && yarn); (cd test/react && yarn); (cd test/ts && yarn); (cd test/vue && yarn)",
+    "test": "npm run test:js && npm run test:react && npm run test:ts && npm run test:vue",
+    "test:js": "cd test/js && eslint --ext .js ./",
+    "test:react": "cd test/react && eslint --ext .js,.jsx ./",
+    "test:ts": "cd test/ts && eslint --ext .ts,.tsx ./",
+    "test:vue": "cd test/vue && eslint --ext .vue ./"
   },
   "repository": {
     "type": "git",
@@ -33,6 +38,11 @@
     "eslint": ">=3.0.0"
   },
   "devDependencies": {
-    "eslint": "^6.8.0"
-  }
+    "eslint": "^6.8.0",
+    "typescript": "^3.8.3",
+    "vue-eslint-parser": "^7.0.0"
+  },
+  "files": [
+    "index.js"
+  ]
 }

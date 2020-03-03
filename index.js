@@ -1,10 +1,10 @@
-var hasAnyDep = require('ptils').hasAnyDep;
+const hasAnyDep = require('ptils').hasAnyDep;
 
-var hasReact = hasAnyDep('react');
-var hasVue = hasAnyDep('vue');
-var hasTS = hasAnyDep('typescript');
+const hasReact = hasAnyDep('react');
+const hasVue = hasAnyDep('vue');
+const hasTS = hasAnyDep('typescript');
 
-var config = {
+const config = {
   parser: 'babel-eslint',
   parserOptions: {
     parser: 'babel-eslint',
@@ -104,16 +104,23 @@ if (hasReact) {
   config.plugins.push('react');
   config.extends.push('plugin:react/recommended');
   config.settings.react = {
-    version: require('react').version
+    version: (function() {
+      try {
+        return require('react').version;
+      } catch (err) {
+        return 'latest';
+      }
+    })()
   };
 }
 
 if (hasVue) {
+  config.parser = 'vue-eslint-parser';
   config.extends.push('plugin:vue/recommended');
 }
 
 if (hasTS) {
-  var tsRules = {
+  const tsRules = {
     'no-unused-vars': 'off',
     'no-invalid-this': 'off',
     'react/sort-comp': 'off',
@@ -128,7 +135,6 @@ if (hasTS) {
   };
   if (hasVue) {
     config.parserOptions.parser = '@typescript-eslint/parser';
-    delete config.parser;
   } else {
     config.parser = '@typescript-eslint/parser';
     delete config.parserOptions.parser;
