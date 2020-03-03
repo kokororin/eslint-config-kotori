@@ -1,6 +1,6 @@
 # eslint-config-kotori
 
-[![Build Status](http://img.shields.io/travis/LoveLiveSunshine/pixiv.moe.svg)](https://travis-ci.org/LoveLiveSunshine/pixiv.moe)
+[![Build Status](https://travis-ci.com/kokororin/eslint-config-kotori.svg?branch=master)](https://travis-ci.com/kokororin/eslint-config-kotori)
 
 ESLint shareable config for me.
 
