@@ -124,11 +124,7 @@ if (hasTS) {
     '@typescript-eslint/prefer-namespace-keyword': 'error',
     '@typescript-eslint/prefer-optional-chain': 'error',
     '@typescript-eslint/no-unused-vars': 'error',
-    '@typescript-eslint/require-await': 'error',
-    '@typescript-eslint/interface-name-prefix': [
-      'error',
-      { prefixWithI: 'never' }
-    ]
+    '@typescript-eslint/require-await': 'error'
   };
   if (hasVue) {
     config.parserOptions.parser = '@typescript-eslint/parser';
