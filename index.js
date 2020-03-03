@@ -1,8 +1,9 @@
-const hasAnyDep = require('ptils').hasAnyDep;
+const { hasAnyDep } = require('ptils');
 
 const hasReact = hasAnyDep('react');
 const hasVue = hasAnyDep('vue');
 const hasTS = hasAnyDep('typescript');
+const hasMocha = hasAnyDep('mocha');
 
 const config = {
   parser: 'babel-eslint',
@@ -10,14 +11,13 @@ const config = {
     parser: 'babel-eslint',
     ecmaFeatures: { jsx: true },
     ecmaVersion: 2019,
-    sourceType: 'module',
-    extraFileExtensions: ['.vue']
+    sourceType: 'module'
   },
   env: {
     browser: true,
     es6: true,
     node: true,
-    mocha: true
+    mocha: hasMocha
   },
   plugins: [],
   extends: [],
@@ -135,6 +135,7 @@ if (hasTS) {
   };
   if (hasVue) {
     config.parserOptions.parser = '@typescript-eslint/parser';
+    config.parserOptions.extraFileExtensions = ['.vue'];
   } else {
     config.parser = '@typescript-eslint/parser';
     delete config.parserOptions.parser;

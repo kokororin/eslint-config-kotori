@@ -4,7 +4,7 @@
   "description": "ESLint shareable config for me.",
   "main": "index.js",
   "scripts": {
-    "pretest": "(cd test/js && yarn); (cd test/react && yarn); (cd test/ts && yarn); (cd test/vue && yarn)",
+    "pretest": "node test/install.js",
     "test": "npm run test:js && npm run test:react && npm run test:ts && npm run test:vue",
     "test:js": "cd test/js && eslint --ext .js ./",
     "test:react": "cd test/react && eslint --ext .js,.jsx ./",
@@ -32,15 +32,15 @@
     "babel-eslint": "^10.1.0",
     "eslint-plugin-react": "^7.18.3",
     "eslint-plugin-vue": "^6.2.1",
-    "ptils": "^0.3.0"
+    "ptils": "^0.3.0",
+    "vue-eslint-parser": "^7.0.0"
   },
   "peerDependencies": {
     "eslint": ">=3.0.0"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
-    "typescript": "^3.8.3",
-    "vue-eslint-parser": "^7.0.0"
+    "typescript": "^3.8.3"
   },
   "files": [
     "index.js"

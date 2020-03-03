@@ -1,3 +1,6 @@
 module.exports = {
-  extends: ['./index']
+  env: {
+    es6: true,
+    node: true
+  }
 };
