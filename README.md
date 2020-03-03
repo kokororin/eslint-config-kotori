@@ -1,4 +1,12 @@
-# にっこにっこにー！
+# eslint-config-kotori
+
+ESLint shareable config for me.
+
+## Features
+
+* React
+* Vue
+* TypeScript
 
 ## Usage
 

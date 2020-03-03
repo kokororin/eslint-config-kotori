@@ -1,16 +1,26 @@
-var path = require('path');
-var fs = require('fs');
-var findNodeModules = require('find-node-modules');
+const { hasAnyDep } = require('ptils');
 
-var nodeModulesPaths = findNodeModules({ cwd: __dirname, relative: false });
-var nodeModulesPath =
-  nodeModulesPaths && nodeModulesPaths[1] ? nodeModulesPaths[1] : false;
-var hasReact = nodeModulesPath
-  ? fs.existsSync(path.join(nodeModulesPath, 'react'))
-  : false;
+const hasReact = hasAnyDep('react');
+const hasVue = hasAnyDep('vue');
+const hasTS = hasAnyDep('typescript');
 
-var config = {
+const config = {
+  parserOptions: {
+    parser: 'babel-eslint',
+    ecmaFeatures: { jsx: true },
+    ecmaVersion: 2019,
+    sourceType: 'module',
+    extraFileExtensions: ['.vue']
+  },
+  env: {
+    browser: true,
+    es6: true,
+    node: true,
+    mocha: true
+  },
   plugins: [],
+  extends: [],
+  settings: {},
   rules: {
     'comma-dangle': 'error', // 要求或禁止使用拖尾逗号
     quotes: ['error', 'single'], // 强制使用一致的反勾号、双引号或单引号
@@ -84,30 +94,47 @@ var config = {
     'no-cond-assign': 'error', // 禁止在条件语句中出现赋值操作符
     'new-cap': 'error', // 要求构造函数首字母大写
     'no-dupe-class-members': 'error', // 不允许类成员中有重复的名称
-    'no-invalid-this': 'error' // Disallow this keywords outside of classes or class-like objects
+    'no-invalid-this': 'error', // Disallow this keywords outside of classes or class-like objects
+    'linebreak-style': 'error' // 强制使用一致的换行符风格
   }
 };
 
 if (hasReact) {
   config.plugins.push('react');
-  config.rules['react/jsx-uses-react'] = 'error';
-  config.rules['react/jsx-boolean-value'] = 'error'; // 如果属性值为 true, 可以直接省略
-  config.rules['react/no-string-refs'] = 'error'; // 总是在Refs里使用回调函数
-  config.rules['react/self-closing-comp'] = 'error'; // 对于没有子元素的标签来说总是自己关闭标签
-  config.rules['react/jsx-no-bind'] = [
-    'error',
-    {
-      ignoreRefs: true,
-      allowArrowFunctions: true
-    }
-  ]; // 当在 render() 里使用事件处理方法时，提前在构造函数里把 this 绑定上去
-  config.rules['react/jsx-uses-vars'] = 'error';
-  config.rules['react/prefer-stateless-function'] = [
-    'error',
-    { ignorePureComponents: true }
-  ]; // 如果你的模块有内部状态或者是refs, 推荐使用 class extends React.Component 而不是 React.createClass
-  config.rules['react/sort-comp'] = 'error';
-  config.rules['react/jsx-pascal-case'] = ['error', { allowAllCaps: true }]; // React模块名使用帕斯卡命名，实例使用骆驼式命名
+  config.extends.push('plugin:react/recommended');
+  config.settings.react = {
+    version: require('react').version
+  };
+}
+
+if (hasVue) {
+  config.plugins.push('vue');
+  config.extends.push('plugin:vue/recommended');
+}
+
+if (hasTS) {
+  const tsRules = {
+    'no-unused-vars': 'off',
+    'react/sort-comp': 'off',
+    'react/prop-types': 'off',
+    '@typescript-eslint/explicit-member-accessibility': ['error'],
+    '@typescript-eslint/array-type': ['error', { default: 'array' }],
+    '@typescript-eslint/no-unnecessary-type-assertion': 'error',
+    '@typescript-eslint/prefer-namespace-keyword': 'error',
+    '@typescript-eslint/prefer-optional-chain': 'error',
+    '@typescript-eslint/no-unused-vars': 'error',
+    '@typescript-eslint/require-await': 'error',
+    '@typescript-eslint/interface-name-prefix': [
+      'error',
+      { prefixWithI: 'never' }
+    ]
+  };
+  config.parserOptions.parser = '@typescript-eslint/parser';
+  config.plugins.push('@typescript-eslint/eslint-plugin');
+  config.extends.push('plugin:@typescript-eslint/eslint-recommended');
+  Object.keys(tsRules).forEach(key => {
+    config.rules[key] = tsRules[key];
+  });
 }
 
 module.exports = config;
