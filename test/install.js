@@ -15,5 +15,10 @@ fs.readdirSync(lib).forEach(function(mod) {
   const npmCmd = os.platform().startsWith('win') ? 'npm.cmd' : 'npm';
 
   // install folder
-  cp.spawn(npmCmd, ['i'], { env: process.env, cwd: modPath });
+  cp.spawnSync(npmCmd, ['i'], { env: process.env, cwd: modPath });
+
+  // remove package-lock.json
+  if (fs.existsSync(path.join(modPath, 'package-lock.json'))) {
+    fs.unlinkSync(path.join(modPath, 'package-lock.json'));
+  }
 });

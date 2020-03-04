@@ -95,7 +95,6 @@ const config = {
     'no-cond-assign': 'error', // 禁止在条件语句中出现赋值操作符
     'new-cap': 'error', // 要求构造函数首字母大写
     'no-dupe-class-members': 'error', // 不允许类成员中有重复的名称
-    'no-invalid-this': 'error', // Disallow this keywords outside of classes or class-like objects
     'linebreak-style': 'error' // 强制使用一致的换行符风格
   }
 };
