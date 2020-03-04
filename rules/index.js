@@ -1,11 +1,6 @@
 const { hasAnyDep } = require('ptils');
 
-const hasReact = hasAnyDep('react');
-const hasVue = hasAnyDep('vue');
-const hasTS = hasAnyDep('typescript');
-const hasMocha = hasAnyDep('mocha');
-
-const config = {
+module.exports = {
   parser: 'babel-eslint',
   parserOptions: {
     parser: 'babel-eslint',
@@ -17,11 +12,8 @@ const config = {
     browser: true,
     es6: true,
     node: true,
-    mocha: hasMocha
+    mocha: hasAnyDep('mocha')
   },
-  plugins: [],
-  extends: [],
-  settings: {},
   rules: {
     'comma-dangle': 'error', // 要求或禁止使用拖尾逗号
     quotes: ['error', 'single'], // 强制使用一致的反勾号、双引号或单引号
@@ -98,52 +90,3 @@ const config = {
     'linebreak-style': 'error' // 强制使用一致的换行符风格
   }
 };
-
-if (hasReact) {
-  config.plugins.push('react');
-  config.extends.push('plugin:react/recommended');
-  config.settings.react = {
-    version: (function() {
-      try {
-        return require('react').version;
-      } catch (err) {
-        return 'latest';
-      }
-    })()
-  };
-}
-
-if (hasVue) {
-  config.parser = 'vue-eslint-parser';
-  config.extends.push('plugin:vue/recommended');
-}
-
-if (hasTS) {
-  const tsRules = {
-    'no-unused-vars': 'off',
-    'no-invalid-this': 'off',
-    'react/sort-comp': 'off',
-    'react/prop-types': 'off',
-    '@typescript-eslint/explicit-member-accessibility': ['error'],
-    '@typescript-eslint/array-type': ['error', { default: 'array' }],
-    '@typescript-eslint/no-unnecessary-type-assertion': 'error',
-    '@typescript-eslint/prefer-namespace-keyword': 'error',
-    '@typescript-eslint/prefer-optional-chain': 'error',
-    '@typescript-eslint/no-unused-vars': 'error',
-    '@typescript-eslint/require-await': 'error'
-  };
-  if (hasVue) {
-    config.parserOptions.parser = '@typescript-eslint/parser';
-    config.parserOptions.extraFileExtensions = ['.vue'];
-  } else {
-    config.parser = '@typescript-eslint/parser';
-    delete config.parserOptions.parser;
-  }
-  config.plugins.push('@typescript-eslint/eslint-plugin');
-  config.extends.push('plugin:@typescript-eslint/eslint-recommended');
-  Object.keys(tsRules).forEach(key => {
-    config.rules[key] = tsRules[key];
-  });
-}
-
-module.exports = config;

@@ -4,5 +4,5 @@ module.exports = {
     project: ['./tsconfig.json'],
     tsconfigRootDir: __dirname
   },
-  extends: ['../../index'],
+  extends: ['../../rules/index', '../../rules/react', '../../rules/typescript']
 };

@@ -2,7 +2,7 @@
   "name": "eslint-config-kotori",
   "version": "0.4.5",
   "description": "ESLint shareable config for me.",
-  "main": "index.js",
+  "main": "rules/index.js",
   "scripts": {
     "pretest": "node test/install.js",
     "test": "npm run test:js && npm run test:react && npm run test:ts && npm run test:vue",
@@ -43,6 +43,6 @@
     "typescript": "^3.8.3"
   },
   "files": [
-    "index.js"
+    "rules"
   ]
 }

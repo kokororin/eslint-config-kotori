@@ -12,8 +12,61 @@ ESLint shareable config for me.
 
 ## Usage
 
-1. `npm install --save-dev eslint-config-kotori eslint`
-2. add `"extends": "kotori"` to your .eslintrc
+### Auto Detect
+
+```json
+{
+  "extends": ["kotori/auto"]
+}
+```
+
+### JavaScript
+
+```json
+{
+  "extends": ["kotori"]
+}
+```
+
+### TypeScript
+
+```json
+{
+  "extends": ["kotori", "kotori/typescript"]
+}
+```
+
+### React
+
+```json
+{
+  "extends": ["kotori", "kotori/react"]
+}
+```
+
+### Vue
+
+```json
+{
+  "extends": ["kotori", "kotori/vue"]
+}
+```
+
+### TypeScript React
+
+```json
+{
+  "extends": ["kotori", "kotori/typescript", "kotori/react"]
+}
+```
+
+### TypeScript Vue
+
+```json
+{
+  "extends": ["kotori", "kotori/typescript", "kotori/vue"]
+}
+```
 
 ## License
 
