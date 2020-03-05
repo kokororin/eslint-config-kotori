@@ -11,12 +11,39 @@ module.exports = {
   plugins: ['@typescript-eslint/eslint-plugin'],
   extends: ['plugin:@typescript-eslint/eslint-recommended'],
   rules: {
+    // 禁止未使用过的变量
     'no-unused-vars': 'off',
-    'no-use-before-define': 'off',
-    // Disallow unused variables
     '@typescript-eslint/no-unused-vars': 'error',
-    // Disallow the use of variables before they are defined
+    // 禁止定义前使用
+    'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
+    // 禁用不必要的构造函数
+    'no-useless-constructor': 'off',
+    '@typescript-eslint/no-useless-constructor': 'error',
+    // 禁止使用 Array 构造函数
+    'no-array-constructor': 'off',
+    '@typescript-eslint/no-array-constructor': 'error',
+    // 不允许类成员中有重复的名称
+    'no-dupe-class-members': 'off',
+    '@typescript-eslint/no-dupe-class-members': 'error',
+    // 禁止出现空函数
+    'no-empty-function': 'off',
+    '@typescript-eslint/no-empty-function': [
+      'error',
+      {
+        // 禁止出现空函数
+        allow: ['arrowFunctions', 'functions', 'methods']
+      }
+    ],
+    // 禁用不必要的分号
+    'no-extra-semi': 'off',
+    '@typescript-eslint/no-extra-semi': 'error',
+    // 强制使用一致的反勾号、双引号或单引号
+    quotes: 'off',
+    '@typescript-eslint/quotes': ['error', 'single'],
+    // 要求或禁止使用分号代替 ASI
+    semi: 'off',
+    '@typescript-eslint/semi': 'error',
     // Require explicit accessibility modifiers on class properties and methods
     '@typescript-eslint/explicit-member-accessibility': ['error'],
     // Requires using either T[] or Array<T> for arrays
