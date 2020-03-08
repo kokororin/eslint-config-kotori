@@ -3,5 +3,8 @@ module.exports = {
   parserOptions: {
     parser: '@typescript-eslint/parser'
   },
-  extends: ['plugin:vue/recommended']
+  extends: ['plugin:vue/recommended'],
+  rules: {
+    'vue/singleline-html-element-content-newline': 'off'
+  }
 };

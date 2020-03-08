@@ -9,7 +9,7 @@
     "test:js": "cd test/js && eslint --ext .js ./",
     "test:react": "cd test/react && eslint --ext .js,.jsx ./",
     "test:ts": "cd test/ts && eslint --ext .ts,.tsx ./",
-    "test:vue": "cd test/vue && eslint --ext .vue ./"
+    "test:vue": "cd test/vue && eslint --ext .js,.vue ./"
   },
   "repository": {
     "type": "git",
