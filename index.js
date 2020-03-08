@@ -19,7 +19,7 @@ module.exports = {
     quotes: ['error', 'single'], // 强制使用一致的反勾号、双引号或单引号
     'no-undef': 'error', // 禁用未声明的变量
     'no-extra-semi': 'error', // 禁用不必要的分号
-    indent: ['error', 2], // 强制使用一致的缩进
+    indent: ['error', 2, { SwitchCase: 1 }], // 强制使用一致的缩进
     semi: 'error', // 要求或禁止使用分号代替 ASI
     'semi-spacing': 'error', // 强制分号前后有空格
     'no-unused-vars': 'error', // 禁止未使用过的变量
