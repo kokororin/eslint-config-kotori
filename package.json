@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-kotori",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "description": "ESLint shareable config for me.",
   "main": "index.js",
   "scripts": {
@@ -47,6 +47,7 @@
     "index.js",
     "react.js",
     "typescript.js",
-    "vue.js"
+    "vue.js",
+    "tsconfig-common.json"
   ]
 }
