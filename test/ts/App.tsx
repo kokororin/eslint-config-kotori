@@ -7,7 +7,7 @@ interface AppState {
 }
 
 export default class App extends React.Component<AppProps, AppState> {
-  public constructor(props: AppProps) {
+  constructor(props: AppProps) {
     super(props);
     this.state = {
       count: 0
@@ -26,7 +26,7 @@ export default class App extends React.Component<AppProps, AppState> {
     });
   };
 
-  public render() {
+  render() {
     const { count } = this.state;
     return (
       <div>

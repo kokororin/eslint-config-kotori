@@ -41,7 +41,10 @@ module.exports = {
     semi: 'off',
     '@typescript-eslint/semi': 'error',
     // Require explicit accessibility modifiers on class properties and methods
-    '@typescript-eslint/explicit-member-accessibility': ['error'],
+    '@typescript-eslint/explicit-member-accessibility': [
+      'error',
+      { accessibility: 'no-public' }
+    ],
     // Requires using either T[] or Array<T> for arrays
     '@typescript-eslint/array-type': ['error', { default: 'array' }],
     // Warns if a type assertion does not change the type of an expression
@@ -80,5 +83,18 @@ module.exports = {
     ],
     // Disallows the use of require statements except in import statements
     '@typescript-eslint/no-var-requires': 'error'
-  }
+  },
+  overrides: [
+    {
+      files: ['*.js', '*.jsx'],
+      parser: 'babel-eslint',
+      parserOptions: {
+        parser: 'babel-eslint'
+      },
+      rules: {
+        '@typescript-eslint/no-unnecessary-type-assertion': 'off',
+        '@typescript-eslint/require-await': 'off'
+      }
+    }
+  ]
 };
