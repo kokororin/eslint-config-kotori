@@ -87,9 +87,9 @@ module.exports = {
   overrides: [
     {
       files: ['*.js', '*.jsx'],
-      parser: 'babel-eslint',
+      parser: '@babel/eslint-parser',
       parserOptions: {
-        parser: 'babel-eslint'
+        parser: '@babel/eslint-parser'
       },
       rules: {
         '@typescript-eslint/no-unnecessary-type-assertion': 'off',

@@ -1,12 +1,16 @@
 const { hasAnyDep } = require('ptils');
 
 module.exports = {
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   parserOptions: {
-    parser: 'babel-eslint',
+    parser: '@babel/eslint-parser',
     ecmaFeatures: { jsx: true },
-    ecmaVersion: 2019,
-    sourceType: 'module'
+    ecmaVersion: 2021,
+    sourceType: 'module',
+    requireConfigFile: false,
+    babelOptions: {
+      presets: ['@babel/preset-react']
+    }
   },
   env: {
     browser: true,
